@@ -45,9 +45,9 @@ services:
     labels:
       kompose.image-pull-secret: "regcred"
       kompose.service.expose: "{{ .Values.DNS_NAME }}"
+      kompose.service.expose.ingress-class-name: "nginx"
       kompose.service.type: "nodeport"
       kompose.service.nodeport.port: "30001"
-	    kompose.service.expose.ingress-class-name: "nginx"
   tracing-server:
     image: openzipkin/zipkin
     ports:
@@ -76,10 +76,9 @@ services:
     - 9091:9090
     labels:
       kompose.image-pull-secret: "regcred"
-
   mysql-server:
     image: mysql:5.7.8
-    environment: 
+    environment:
       MYSQL_ROOT_PASSWORD: petclinic
       MYSQL_DATABASE: petclinic
     ports:
