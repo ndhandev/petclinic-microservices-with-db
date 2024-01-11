@@ -34,6 +34,13 @@ spec:
               hostPort: 8083
               protocol: TCP
           resources: {}
+<<<<<<< HEAD
+=======
+      initContainers:
+        - name: init-discovery-server
+          image: busybox
+          command: ['sh', '-c', 'until nc -z discovery-server:8761; do echo waiting for discovery-server; sleep 2; done;']          
+>>>>>>> feature/msp-17
       imagePullSecrets:
         - name: regcred
       restartPolicy: Always
